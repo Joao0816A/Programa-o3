@@ -1,67 +1,67 @@
 <?php 
 
-class ObraLiteraria {
-    // atributos da obra
-    private string $nome;
-    private string $escritora;
-    private int $anoLancamento;
-    private bool $estaDisponivel;
+class Livro {
+    // Atributos privados Livro
+    private string $titulo;
+    private string $autor;
+    private int $anoPublicacao;
+    private bool $disponivel;
 
     // Construtor
-    public function __construct(string $nome = "", string $escritora = "", int $anoLancamento = 0, bool $estaDisponivel = true) {
-        $this->nome = $nome;
-        $this->escritora = $escritora;
-        $this->anoLancamento = $anoLancamento;
-        $this->estaDisponivel = $estaDisponivel;
+    public function __construct(string $titulo = "", string $autor = "", int $anoPublicacao = 0, bool $disponivel = true) {
+        $this->titulo = $titulo;
+        $this->autor = $autor;
+        $this->anoPublicacao = $anoPublicacao;
+        $this->disponivel = $disponivel;
     }
 
-    // Métodos de acesso para o nome
-    public function getNome(): string {
-        return $this->nome;
+    // acesso para o título
+    public function getTitulo(): string {
+        return $this->titulo;
     }
 
-    public function setNome(string $nome): void {
-        $this->nome = $nome;
+    public function setTitulo(string $titulo): void {
+        $this->titulo = $titulo;
     }
 
-    // Métodos de acesso 
-    public function getEscritora(): string {
-        return $this->escritora;
+    // autor
+    public function getAutor(): string {
+        return $this->autor;
     }
 
-    public function setEscritora(string $escritora): void {
-        $this->escritora = $escritora;
+    public function setAutor(string $autor): void {
+        $this->autor = $autor;
     }
 
-    // Métodos ano de lançamento
-    public function getAnoLancamento(): int {
-        return $this->anoLancamento;
+    // ano de publi
+    public function getAnoPublicacao(): int {
+        return $this->anoPublicacao;
     }
 
-    public function setAnoLancamento(int $ano): void {
-        $this->anoLancamento = $ano;
+    public function setAnoPublicacao(int $ano): void {
+        $this->anoPublicacao = $ano;
     }
 
-    // Métodos disponibilidade
-    public function estaDisponivel(): bool {
-        return $this->estaDisponivel;
+    // Métodos de acesso para a disponibilidade
+    public function isDisponivel(): bool {
+        return $this->disponivel;
     }
 
-    public function definirDisponibilidade(bool $disponivel): void {
-        $this->estaDisponivel = $disponivel;
+    public function setDisponivel(bool $disponivel): void {
+        $this->disponivel = $disponivel;
     }
 
-    // dados da obra
-    public function mostrarDetalhes(): void {
-        echo "Nome: " . $this->nome . PHP_EOL;
-        echo "Escritora: " . $this->escritora . PHP_EOL;
-        echo "Ano de Lançamento: " . $this->anoLancamento . PHP_EOL;
-        echo "Está disponível? " . ($this->estaDisponivel ? "Sim" : "Não") . PHP_EOL;
+    // info livro
+    public function exibirInformacoes(): void {
+        echo "Título: " . $this->titulo . PHP_EOL;
+        echo "Autor: " . $this->autor . PHP_EOL;
+        echo "Ano de Publicação: " . $this->anoPublicacao . PHP_EOL;
+        echo "Disponível: " . ($this->disponivel ? "Sim" : "Não") . PHP_EOL;
     }
 }
 
-// output(saida)
-$autobiografia = new ObraLiteraria("Em Busca de Mim", "Viola Davis", 2022, true);
-$autobiografia->mostrarDetalhes();
+// output(saída)
+$exemploLivro = new Livro("Em Busca de Mim", "Viola Davis", 2022, true);
+$exemploLivro->exibirInformacoes();
 
 ?>
