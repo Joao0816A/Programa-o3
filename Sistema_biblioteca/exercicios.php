@@ -1,197 +1,66 @@
-<?php
-// Exercício 1 a 4 – Classe Livro com leitor
-class Livro {
-    private $titulo;
-    private $autor;
-    private $ano;
-    private $disponivel;
-    protected $leitorAtual;
 
-    public function __construct($titulo, $autor, $ano) {
+<?php 
+
+class Livro {
+    // Atributos privado
+    private string $titulo;
+    private string $autor;
+    private int $anoPublicacao;
+    private bool $disponivel;
+
+    // Construtor 
+    public function __construct(string $titulo = "", string $autor = "", int $anoPublicacao = 0, bool $disponivel = true) {
         $this->titulo = $titulo;
         $this->autor = $autor;
-        $this->ano = $ano;
-        $this->disponivel = true;
-        $this->leitorAtual = null;
+        $this->anoPublicacao = $anoPublicacao;
+        $this->disponivel = $disponivel;
     }
 
-    // Getters
-    public function getTitulo() {
+    // Métodos get e set 
+    public function getTitulo(): string {
         return $this->titulo;
     }
 
-    public function getAutor() {
-        return $this->autor;
-    }
-
-    public function getAno() {
-        return $this->ano;
-    }
-
-    public function isDisponivel() {
-        return $this->disponivel;
-    }
-
-    // Setters
-    public function setTitulo($titulo) {
+    public function setTitulo(string $titulo): void {
         $this->titulo = $titulo;
     }
 
-    public function setAutor($autor) {
+    // Métodos get e set para o Autor
+    public function getAutor(): string {
+        return $this->autor;
+    }
+
+    public function setAutor(string $autor): void {
         $this->autor = $autor;
     }
 
-    public function setAno($ano) {
-        $this->ano = $ano;
+    // Métodos get e set para Ano de Publi
+    public function getAnoPublicacao(): int {
+        return $this->anoPublicacao;
     }
 
-    public function setDisponivel($status) {
-        $this->disponivel = $status;
+    public function setAnoPublicacao(int $ano): void {
+        $this->anoPublicacao = $ano;
     }
 
-    // Método para exibir as informações
-    public function exibirInformacoes() {
-        echo "Título: " . $this->titulo . "<br>";
-        echo "Autor: " . $this->autor . "<br>";
-        echo "Ano: " . $this->ano . "<br>";
-        echo "Disponível: " . ($this->disponivel ? "Sim" : "Não") . "<br>";
+    // Métodos get e set para Disponível
+    public function isDisponivel(): bool {
+        return $this->disponivel;
     }
 
-    // Exercício 2 - emprestar, devolver, verificar
-    public function emprestar($nomeLeitor) {
-        if ($this->disponivel) {
-            $this->disponivel = false;
-            $this->leitorAtual = $nomeLeitor;
-            echo "Livro emprestado para: " . $nomeLeitor . "<br>";
-        } else {
-            echo "Livro não disponível para empréstimo.<br>";
-        }
+    public function setDisponivel(bool $disponivel): void {
+        $this->disponivel = $disponivel;
     }
 
-    public function devolver() {
-        if (!$this->disponivel) {
-            echo "Livro devolvido por: " . $this->leitorAtual . "<br>";
-            $this->disponivel = true;
-            $this->leitorAtual = null;
-        } else {
-            echo "Livro já está disponível.<br>";
-        }
-    }
-
-    public function quemPegou() {
-        if ($this->leitorAtual != null) {
-            echo "Livro está com: " . $this->leitorAtual . "<br>";
-        } else {
-            echo "Livro está na biblioteca.<br>";
-        }
+    // Método extra para exibir informações formatadas
+    public function exibirInformacoes(): void {
+        echo "Título: " . $this->titulo . PHP_EOL;
+        echo "Autor: " . $this->autor . PHP_EOL;
+        echo "Ano de Publicação: " . $this->anoPublicacao . PHP_EOL;
+        echo "Disponível: " . ($this->disponivel ? "Sim" : "Não") . PHP_EOL;
     }
 }
 
-// Exercício 3 – Classe Leitor
-class Leitor {
-    private $nome;
-    private $email;
-    private $telefone;
-
-    public function __construct($nome, $email, $telefone) {
-        $this->nome = $nome;
-        $this->email = $email;
-        $this->telefone = $telefone;
-    }
-
-    public function getNome() {
-        return $this->nome;
-    }
-
-    public function getEmail() {
-        return $this->email;
-    }
-
-    public function getTelefone() {
-        return $this->telefone;
-    }
-
-    public function setNome($nome) {
-        $this->nome = $nome;
-    }
-
-    public function setEmail($email) {
-        $this->email = $email;
-    }
-
-    public function setTelefone($telefone) {
-        $this->telefone = $telefone;
-    }
-
-    public function exibirLeitor() {
-        echo "Nome: " . $this->nome . "<br>";
-        echo "Email: " . $this->email . "<br>";
-        echo "Telefone: " . $this->telefone . "<br>";
-    }
-}
-
-// Exercício 5 – Classe Biblioteca
-class Biblioteca {
-    public $nomeBiblioteca;
-    private $livros = [];
-    private $leitores = [];
-
-    public function __construct($nome) {
-        $this->nomeBiblioteca = $nome;
-    }
-
-    public function adicionarLivro(Livro $livro) {
-        $this->livros[] = $livro;
-    }
-
-    public function adicionarLeitor(Leitor $leitor) {
-        $this->leitores[] = $leitor;
-    }
-
-    public function listarLivros() {
-        echo "<b>Livros na biblioteca:</b><br>";
-        foreach ($this->livros as $livro) {
-            $livro->exibirInformacoes();
-            echo "<hr>";
-        }
-    }
-
-    public function listarLeitores() {
-        echo "<b>Leitores cadastrados:</b><br>";
-        foreach ($this->leitores as $leitor) {
-            $leitor->exibirLeitor();
-            echo "<hr>";
-        }
-    }
-}
-
-// EXEMPLO DE USO 
-
-echo "<h3>Exemplo de Empréstimo</h3>";
-$livro1 = new Livro("Dom Casmurro", "Machado de Assis", 1899);
-$leitor1 = new Leitor("João", "joao@email.com", "119999999");
-
-$livro1->exibirInformacoes();
-$livro1->emprestar($leitor1->getNome());
-$livro1->quemPegou();
-$livro1->devolver();
-$livro1->quemPegou();
-
-echo "<h3>Biblioteca</h3>";
-$biblioteca = new Biblioteca("Biblioteca");
-
-$livro2 = new Livro("1984", "George Orwell", 1949);
-$livro3 = new Livro("Romeu e Julieta", "William Shakespeare", 1592);
-
-$leitor2 = new Leitor("Pedro", "pedro@email.com", "119888888");
-
-$biblioteca->adicionarLivro($livro1);
-$biblioteca->adicionarLivro($livro2);
-$biblioteca->adicionarLivro($livro3);
-
-$biblioteca->adicionarLeitor($leitor1);
-$biblioteca->adicionarLeitor($leitor2);
-
-$biblioteca->listarLivros();
-$biblioteca->listarLeitores();
-?>
+// Exemplo Referente ao uso
+$livro = new Livro("Em Busca de Mim", "Viola Davis", 2022, true);
+$livro->exibirInformacoes();
