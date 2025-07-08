@@ -1,13 +1,13 @@
 <?php 
 
 class ObraLiteraria {
-    // Definição dos atributos da obra
+    // atributos da obra
     private string $nome;
     private string $escritora;
     private int $anoLancamento;
     private bool $estaDisponivel;
 
-    // Construtor básico com parâmetros padrão
+    // Construtor
     public function __construct(string $nome = "", string $escritora = "", int $anoLancamento = 0, bool $estaDisponivel = true) {
         $this->nome = $nome;
         $this->escritora = $escritora;
@@ -24,7 +24,7 @@ class ObraLiteraria {
         $this->nome = $nome;
     }
 
-    // Métodos de acesso para a escritora
+    // Métodos de acesso 
     public function getEscritora(): string {
         return $this->escritora;
     }
@@ -33,7 +33,7 @@ class ObraLiteraria {
         $this->escritora = $escritora;
     }
 
-    // Métodos de acesso para o ano de lançamento
+    // Métodos ano de lançamento
     public function getAnoLancamento(): int {
         return $this->anoLancamento;
     }
@@ -42,7 +42,7 @@ class ObraLiteraria {
         $this->anoLancamento = $ano;
     }
 
-    // Métodos de acesso para disponibilidade
+    // Métodos disponibilidade
     public function estaDisponivel(): bool {
         return $this->estaDisponivel;
     }
@@ -51,7 +51,7 @@ class ObraLiteraria {
         $this->estaDisponivel = $disponivel;
     }
 
-    // Mostrar os dados da obra
+    // dados da obra
     public function mostrarDetalhes(): void {
         echo "Nome: " . $this->nome . PHP_EOL;
         echo "Escritora: " . $this->escritora . PHP_EOL;
@@ -60,7 +60,7 @@ class ObraLiteraria {
     }
 }
 
-// Exemplo de uso da classe
+// output(saida)
 $autobiografia = new ObraLiteraria("Em Busca de Mim", "Viola Davis", 2022, true);
 $autobiografia->mostrarDetalhes();
 
