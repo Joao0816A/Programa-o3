@@ -48,7 +48,7 @@ class CarroEletrico extends Carro {
 }
 
 $caminhao = new Caminhao;
-$caminhao->modelo = "Volvo";
+$caminhao->modelo = "Mercedes";
 $caminhao->cor = "Branco";
 $caminhao->ano = 2020;
 $caminhao->carregarCarga();
@@ -56,9 +56,9 @@ $caminhao->carregarCarga();
 echo "<hr>";
 
 $carro1 = new Carro;
-$carro1->modelo = "Gol";
-$carro1->cor = "Vermelho";
-$carro1->ano = 2018;
+$carro1->modelo = "Chevrolet";
+$carro1->cor = "Prata";
+$carro1->ano = 2019;
 $carro1->tipoCombustivel = "Gasolina";
 $carro1->andar();
 echo "<br>";
@@ -69,10 +69,10 @@ $carro1->mostrarCombustivel();
 echo "<hr>";
 
 $carro2 = new Carro;
-$carro2->modelo = "Gol";
-$carro2->cor = "Preto";
-$carro2->ano = 2022;
-$carro2->tipoCombustivel = "Gasolina";
+$carro2->modelo = "Fiat";
+$carro2->cor = "Vermelho";
+$carro2->ano = 2023;
+$carro2->tipoCombustivel = "Flex";
 $carro2->parar();
 echo "<br>";
 $carro2->ligarLimpador();
@@ -83,8 +83,8 @@ echo "<hr>";
 
 $moto1 = new Moto;
 $moto1->modelo = "Honda";
-$moto1->cor = "Azul";
-$moto1->ano = 2017;
+$moto1->cor = "Preta";
+$moto1->ano = 2018;
 $moto1->andar();
 echo "<br>";
 $moto1->darGrau();
@@ -93,7 +93,7 @@ echo "<hr>";
 
 $moto2 = new Moto;
 $moto2->modelo = "Yamaha";
-$moto2->cor = "Preta";
+$moto2->cor = "Azul";
 $moto2->ano = 2021;
 $moto2->andar();
 echo "<br>";
@@ -102,9 +102,9 @@ $moto2->parar();
 echo "<hr>";
 
 $carroE = new CarroEletrico;
-$carroE->modelo = "Tesla";
-$carroE->cor = "Branco";
-$carroE->ano = 2023;
+$carroE->modelo = "Chevrolet";
+$carroE->cor = "Cinza";
+$carroE->ano = 2024;
 $carroE->tipoCombustivel = "Elétrico";
 $carroE->andar();
 echo "<br>";
