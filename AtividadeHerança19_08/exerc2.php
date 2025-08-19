@@ -57,7 +57,7 @@ echo $cat->caminha() . "<br>";
 
 
 <?php
-//b)
+
 class Pessoa {
     protected $nome;
     protected $idade;
@@ -119,3 +119,4 @@ $rica->fazCompras();
 $pobre->trabalha();
 $miseravel->mendiga();
 ?>
+
